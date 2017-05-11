@@ -21,14 +21,12 @@ class LogService extends BaseService{
      * @param string $message
      */
     static function Log($category = '', $message = ''){
-
         $db = D('Log/Log');
 
         $data = [
             'category' => $category,
             'message' => $message,
             'inputtime' => time(),
-            'ip' => get_client_ip()
         ];
 
         $insertid = $db->add($data);

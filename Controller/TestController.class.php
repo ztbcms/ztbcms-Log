@@ -14,6 +14,7 @@ class TestController extends AdminBase{
 
     public function test(){
         LogService::Log(__CLASS__.'::'.__FUNCTION__,'测试数据...');
+        LogService::Log('tst','ffff.');
     }
 
 }

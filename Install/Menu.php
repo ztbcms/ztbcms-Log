@@ -11,9 +11,9 @@ return array(
         //状态，1是显示，0不显示（需要参数的，建议不显示，例如编辑,删除等操作）
         "status" => 1,
         //名称
-        "name" => "日志模块",
+        "name" => "日志",
         //备注
-        "remark" => "日志模块！",
+        "remark" => "记录日志信息",
         //子菜单列表
         "child" => array(
              array(
@@ -26,7 +26,7 @@ return array(
                  "route" => "Log/Index/getLogs",
                  "type" => 1,
                  "status" => 0,
-                 "name" => "获取日志列表信息",
+                 "name" => "获取日志列表信息接口",
              ),
         ),
     ),

@@ -9,6 +9,5 @@ CREATE TABLE `cms_log_log` (
   `category` varchar(128) NOT NULL COMMENT '类别',
   `message` varchar(4098) NOT NULL COMMENT '日志信息',
   `inputtime` int NOT NULL COMMENT '添加时间',
-  `ip` varchar(15) NOT NULL COMMENT 'ip地址',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
