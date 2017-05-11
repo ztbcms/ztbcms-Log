@@ -9,12 +9,16 @@ namespace Log\Service;
 use Log\Model\LogLogModel;
 use System\Service\BaseService;
 
+/**
+ * 日志服务
+ */
 class LogService extends BaseService{
 
     /**
      * 添加日志
-     * string $category
-     * string $msg
+     *
+     * @param string $category
+     * @param string $message
      */
     static function Log($category = '', $message = ''){
 
