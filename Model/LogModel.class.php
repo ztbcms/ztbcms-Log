@@ -14,9 +14,9 @@ use Think\Model;
  *
  * @package Log\Model
  */
-class LogLogModel extends Model {
+class LogModel extends Model {
 
-    const TABLE_NAME = 'log_log';
+    protected $tableName = 'log_log';
 
 
 }

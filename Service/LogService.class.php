@@ -18,7 +18,7 @@ class LogService extends BaseService{
      */
     static function Log($category = '', $message = ''){
 
-        $db = D('Log/'.LogLogModel::TABLE_NAME);
+        $db = D('Log/Log');
 
         $data = [
             'userid' => \Admin\Service\User::getInstance()->id? : 0,

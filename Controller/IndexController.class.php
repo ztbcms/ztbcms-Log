@@ -18,10 +18,6 @@ class IndexController extends AdminBase{
         $this->display();
     }
 
-    public function test(){
-        LogService::Log(__CLASS__.'::'.__FUNCTION__,'测试数据...');
-    }
-
     // ajax 获取日志列表信息
     public function getLogs(){
         $userid = I('userid');
@@ -47,10 +43,10 @@ class IndexController extends AdminBase{
             $where['ip'] = array('like', "%{$ip}%");
         }
 
-        $count = D('Log/'.LogLogModel::TABLE_NAME)->where($where)->count();
+        $count = D('Log/Log')->where($where)->count();
         $limit = 10;
         $total_page = ceil( $count / $limit );
-        $Logs = D('Log/'.LogLogModel::TABLE_NAME)->where($where)->page($page, $limit)->order(array("id" => "desc"))->select();
+        $Logs = D('Log/Log')->where($where)->page($page, $limit)->order(array("id" => "desc"))->select();
         $data = [
             'logs' => $Logs,
             'page' => $page,
