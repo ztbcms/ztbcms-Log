@@ -1,10 +1,11 @@
 <extend name="../../Admin/View/Common/base_layout"/>
 <block name="content">
-    <div id="app" style="padding: 8px;">
+    <div id="app" style="padding: 8px;display: none;">
         <h4>搜索</h4>
         <hr>
         <div class="search_type cc mb10">
-            类别：<input type="text" class="input" v-model="where.category" placeholder="类别">
+            类别：<input type="text" class="input" v-model="where.category" placeholder="">
+            日志内容：<input type="text" class="input" v-model="where.message" placeholder="">
             时间：
             <input type="date" name="start_time" class="input" v-model="where.start_time">
             -
@@ -18,7 +19,7 @@
                 <tr style="background: gainsboro;">
                     <td align="center" width="80">ID</td>
                     <td align="center" width="300">类别</td>
-                    <td align="center" >日志信息</td>
+                    <td align="center">日志内容</td>
                     <td align="center" width="160">时间</td>
                 </tr>
                 </thead>
@@ -37,7 +38,9 @@
                     <button @click="toPage( parseInt(where.page) - 1 )" class="btn btn-primary">上一页</button>
                     {{ where.page }} / {{ total_page }}
                     <button @click="toPage( parseInt(where.page) + 1 )" class="btn btn-primary">下一页</button>
-                    <span style="line-height: 30px;margin-left: 10px;"><input id="ipt_page" style="width:50px;text-align: center;" type="text" v-model="temp_page"></span>
+                    <span style="line-height: 30px;margin-left: 10px;"><input id="ipt_page"
+                                                                              style="width:50px;text-align: center;"
+                                                                              type="text" v-model="temp_page"></span>
                     <span><button class="btn btn-primary" @click="toPage( temp_page )">跳转</button></span>
                 </ul>
             </div>
@@ -45,14 +48,15 @@
     </div>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             new Vue({
                 el: '#app',
                 data: {
                     where: {
-                        category : '{:I("category","")}',
-                        start_time : '{:I("start_time","")}',
-                        end_time : '{:I("end_time","")}',
+                        category: '',
+                        message: '',
+                        start_time: '',
+                        end_time: '',
                         page: 1,
                         limit: 20
                     },
@@ -74,15 +78,15 @@
                     }
                 },
                 methods: {
-                    getList: function(){
+                    getList: function () {
                         var that = this;
                         $.ajax({
                             url: '{:U("Log/Index/getLogs")}',
                             data: that.where,
                             type: 'get',
                             dataType: 'json',
-                            success: function(res){
-                                if(res.status){
+                            success: function (res) {
+                                if (res.status) {
                                     that.logs = res.data.items;
                                     that.where.page = res.data.page;
                                     that.where.limit = res.data.limit;
@@ -102,14 +106,15 @@
                         }
                         this.getList();
                     },
-                    search: function(){
+                    search: function () {
                         this.where.page = 1;
                         this.where.start_time = $('input[name="start_time"]').val();
                         this.where.end_time = $('input[name="end_time"]').val();
                         this.getList();
                     }
                 },
-                mounted: function(){
+                mounted: function () {
+                    document.getElementById('app').style.display = 'block';
                     this.getList();
                 }
             });
