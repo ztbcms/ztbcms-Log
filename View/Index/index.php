@@ -7,9 +7,9 @@
             类别：<input type="text" class="input" v-model="where.category" placeholder="">
             日志内容：<input type="text" class="input" v-model="where.message" placeholder="">
             时间：
-            <input type="date" name="start_time" class="input" v-model="where.start_time">
+            <input type="text" name="start_date" class="input datepicker" >
             -
-            <input type="date" name="end_time" class="input" v-model="where.end_time">
+            <input type="text" name="end_date" class="input datepicker">
             <button class="btn btn-primary" style="margin-left: 8px;" @click="search">搜索</button>
         </div>
         <hr>
@@ -55,8 +55,8 @@
                     where: {
                         category: '',
                         message: '',
-                        start_time: '',
-                        end_time: '',
+                        start_date: '',
+                        end_date: '',
                         page: 1,
                         limit: 20
                     },
@@ -108,8 +108,8 @@
                     },
                     search: function () {
                         this.where.page = 1;
-                        this.where.start_time = $('input[name="start_time"]').val();
-                        this.where.end_time = $('input[name="end_time"]').val();
+                        this.where.start_date = $('input[name="start_date"]').val();
+                        this.where.end_date = $('input[name="end_date"]').val();
                         this.getList();
                     }
                 },
@@ -118,6 +118,15 @@
                     this.getList();
                 }
             });
+
+            //Date picker 默认配置【必须在vue实例之后初始化】
+            if($('.datepicker') && $('.datepicker').datepicker){
+                $('.datepicker').datepicker({
+                    autoclose: true,
+                    language: 'zh-CN',
+                    format: 'yyyy-mm-dd'
+                });
+            }
         });
     </script>
 </block>

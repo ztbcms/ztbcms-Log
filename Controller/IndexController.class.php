@@ -23,8 +23,8 @@ class IndexController extends AdminBase {
      */
     public function getLogs() {
         $category = I('category');
-        $start_time = I('start_time');
-        $end_time = I('end_time');
+        $start_date = I('start_date');
+        $end_date = I('end_date');
         $page = I('page', 1);
         $limit = I('limit', 20);
         $message = I('message');
@@ -33,10 +33,10 @@ class IndexController extends AdminBase {
         if (!empty($category)) {
             $where['category'] = array('LIKE', "%'.$category.'%");
         }
-        if (!empty($start_time) && !empty($end_time)) {
-            $start_time = strtotime($start_time);
-            $end_time = strtotime($end_time) + 24 * 60 * 60 - 1;
-            $where['inputtime'] = array(array('EGT', $start_time), array('ELT', $end_time), 'AND');
+        if (!empty($start_date) && !empty($end_date)) {
+            $start_date = strtotime($start_date);
+            $end_date = strtotime($end_date) + 24 * 60 * 60 - 1;
+            $where['inputtime'] = array(array('EGT', $start_date), array('ELT', $end_date), 'AND');
         }
         if (!empty($message)) {
             $where['message'] = array('LIKE', '%' . $message . '%');
