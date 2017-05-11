@@ -3,7 +3,7 @@
 return array(
     array(
         //父菜单ID，NULL或者不写系统默认，0为顶级菜单
-        "parentid" => NULL,
+        "parentid" => 37,
         //地址，[模块/]控制器/方法
         "route" => "Log/Index/index",
         //类型，1：权限认证+菜单，0：只作为菜单
@@ -16,18 +16,18 @@ return array(
         "remark" => "日志模块！",
         //子菜单列表
         "child" => array(
-            // array(
-            //     "route" => "Search/Search/create",
-            //     "type" => 1,
-            //     "status" => 1,
-            //     "name" => "重建索引",
-            // ),
-            // array(
-            //     "route" => "Search/Search/searchot",
-            //     "type" => 1,
-            //     "status" => 1,
-            //     "name" => "热门搜索",
-            // ),
+             array(
+                 "route" => "Log/Index/index",
+                 "type" => 1,
+                 "status" => 1,
+                 "name" => "日志列表",
+             ),
+             array(
+                 "route" => "Log/Index/getLogs",
+                 "type" => 1,
+                 "status" => 0,
+                 "name" => "获取日志列表信息",
+             ),
         ),
     ),
 );

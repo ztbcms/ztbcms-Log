@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS `cms_log_category`;
+DROP TABLE IF EXISTS `cms_log_log`;

@@ -6,7 +6,7 @@
 
 namespace Log\Service;
 
-use Log\Model\BaseModel;
+use Log\Model\LogLogModel;
 use System\Service\BaseService;
 
 class LogService extends BaseService{
@@ -18,7 +18,7 @@ class LogService extends BaseService{
      */
     static function Log($category = '', $message = ''){
 
-        $db = M(BaseModel::DB_NAME);
+        $db = D('Log/'.LogLogModel::TABLE_NAME);
 
         $data = [
             'userid' => \Admin\Service\User::getInstance()->id? : 0,

@@ -14,9 +14,9 @@ use Think\Model;
  *
  * @package Log\Model
  */
-class BaseModel extends Model {
+class LogLogModel extends Model {
 
-    const DB_NAME = 'log_category';
+    const TABLE_NAME = 'log_log';
 
 
 }
