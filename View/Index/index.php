@@ -20,7 +20,7 @@
                     <td align="center" width="80">ID</td>
                     <td align="center" width="300">类别</td>
                     <td align="center">日志内容</td>
-                    <td align="center" width="160">时间</td>
+                    <td align="center" width="160">发布时间</td>
                 </tr>
                 </thead>
                 <tbody>
