@@ -12,7 +12,7 @@ return array(
 	//模块简介
 	'introduce' => '记录日志',
 	//模块介绍地址
-	'address' => 'http://doc.ztbcms.com/module/area/',
+	'address' => 'http://doc.ztbcms.com/module/log/',
 	//模块作者
 	'author' => 'ZtbCMS',
 	//作者地址
@@ -24,7 +24,7 @@ return array(
 	//适配最低CMS版本，
 	'adaptation' => '3.0.0.0',
 	//签名
-	'sign' => 'b19cc279ed484c13c96c2f7142e2f437',
+	'sign' => 'd04078c5b86475cd5a0c690b9905953d',
 	//依赖模块
 	'depend' => array(),
 	//行为注册
