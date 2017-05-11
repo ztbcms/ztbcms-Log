@@ -118,15 +118,6 @@
                     this.getList();
                 }
             });
-
-            //Date picker 默认配置【必须在vue实例之后初始化】
-            if($('.datepicker') && $('.datepicker').datepicker){
-                $('.datepicker').datepicker({
-                    autoclose: true,
-                    language: 'zh-CN',
-                    format: 'yyyy-mm-dd'
-                });
-            }
         });
     </script>
 </block>
