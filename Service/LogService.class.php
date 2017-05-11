@@ -21,7 +21,6 @@ class LogService extends BaseService{
         $db = D('Log/Log');
 
         $data = [
-            'userid' => \Admin\Service\User::getInstance()->id? : 0,
             'category' => $category,
             'message' => $message,
             'inputtime' => time(),

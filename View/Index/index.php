@@ -4,7 +4,6 @@
         <h4>搜索</h4>
         <hr>
         <div class="search_type cc mb10">
-            用户ID：<input type="text" class="input" v-model="where.userid" placeholder="用户ID">
             类名：<input type="text" class="input" v-model="where.category" placeholder="类名">
             IP：<input type="text" class="input" v-model="where.ip" placeholder="IP">
             时间：
@@ -19,8 +18,7 @@
                 <thead>
                 <tr>
                     <td align="center" width="80">ID</td>
-                    <td align="center" width="80">用户ID</td>
-                    <td align="center" width="300">类名</td>
+                    <td align="center" width="300">类别</td>
                     <td align="center" >日志信息</td>
                     <td align="center" width="160">时间</td>
                     <td align="center" width="120">IP</td>
@@ -29,7 +27,6 @@
                 <tbody>
                 <tr v-for="item in logs">
                     <td align="center">{{item.id}}</td>
-                    <td align="center">{{item.userid}}</td>
                     <td align="center">{{item.category}}</td>
                     <td align="center">{{item.message}}</td>
                     <td align="center">{{item.inputtime|getFormatTime}}</td>
@@ -41,8 +38,9 @@
             <div style="text-align: center">
                 <ul class="pagination pagination-sm no-margin">
                     <button v-on:click="toPage( parseInt(where.page) - 1 )" class="btn btn-primary">上一页</button>
+                    {{ where.page }} / {{ total_page }}
                     <button v-on:click="toPage( parseInt(where.page) + 1 )" class="btn btn-primary">下一页</button>
-                    <span style="line-height: 30px;margin-left: 50px"><input id="ipt_page" style="width:50px;" type="text" v-model="temp_page"> / {{ total_page }}</span>
+                    <span style="line-height: 30px;margin-left: 50px"><input id="ipt_page" style="width:50px;" type="text" v-model="temp_page"></span>
                     <span><button class="btn btn-primary" v-on:click="toPage( temp_page )">GO</button></span>
                 </ul>
             </div>
@@ -54,7 +52,6 @@
             el: '#app',
             data: {
                 where: {
-                    userid : '{:I("userid","")}',
                     category : '{:I("category","")}',
                     start_time : '{:I("start_time","")}',
                     end_time : '{:I("end_time","")}',

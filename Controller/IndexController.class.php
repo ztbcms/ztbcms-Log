@@ -20,7 +20,6 @@ class IndexController extends AdminBase{
 
     // ajax 获取日志列表信息
     public function getLogs(){
-        $userid = I('userid');
         $category = I('category');
         $start_time = I('start_time');
         $end_time = I('end_time');
@@ -28,16 +27,13 @@ class IndexController extends AdminBase{
         $page = I('page', 1);
 
         $where = array();
-        if (!empty($userid)) {
-            $where['userid'] = array('eq', $userid);
-        }
         if (!empty($category)) {
             $where['category'] = array('like', "%{$category}%");
         }
         if (!empty($start_time) && !empty($end_time)) {
             $start_time = strtotime($start_time);
-            $end_time = strtotime($end_time) + 86399;
-            $where['inputtime'] = array(array('GT', $start_time), array('LT', $end_time), 'AND');
+            $end_time = strtotime($end_time) + 24*60*60-1;
+            $where['inputtime'] = array(array('EGT', $start_time), array('ELT', $end_time), 'AND');
         }
         if (!empty($ip)) {
             $where['ip'] = array('like', "%{$ip}%");
