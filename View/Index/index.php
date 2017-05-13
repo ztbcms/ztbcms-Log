@@ -1,7 +1,7 @@
 <extend name="../../Admin/View/Common/base_layout"/>
 <block name="content">
     <div id="app" style="padding: 8px;display: none;">
-        <h4>搜索</h4>
+        <h4>日志列表</h4>
         <hr>
         <div class="search_type cc mb10">
             类别：<input type="text" class="input" v-model="where.category" placeholder="">
