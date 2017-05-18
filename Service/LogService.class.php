@@ -20,7 +20,7 @@ class LogService extends BaseService{
      * @param string $category
      * @param string $message
      */
-    static function Log($category = '', $message = ''){
+    static function log($category = '', $message = ''){
         $db = D('Log/Log');
 
         $data = [
