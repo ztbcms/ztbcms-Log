@@ -31,7 +31,7 @@ class IndexController extends AdminBase {
 
         $where = array();
         if (!empty($category)) {
-            $where['category'] = array('LIKE', "%'.$category.'%");
+            $where['category'] = array('LIKE', '%'.$category.'%');
         }
         if (!empty($start_date) && !empty($end_date)) {
             $start_date = strtotime($start_date);
