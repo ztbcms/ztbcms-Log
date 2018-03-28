@@ -22,35 +22,19 @@ class IndexController extends AdminBase {
      * 获取日志列表信息
      */
     public function getLogs() {
+        //按类别搜索时的类别关键字
         $category = I('category');
+        //设置时间范围，从 $start_date 到 $end_date
         $start_date = I('start_date');
         $end_date = I('end_date');
+        //指定获取分页结果的第几页
         $page = I('page', 1);
         $limit = I('limit', 20);
+        //按内容搜索时的日志内容关键字
         $message = I('message');
 
-        $where = array();
-        if (!empty($category)) {
-            $where['category'] = array('LIKE', '%'.$category.'%');
-        }
-        if (!empty($start_date) && !empty($end_date)) {
-            $start_date = strtotime($start_date);
-            $end_date = strtotime($end_date) + 24 * 60 * 60 - 1;
-            $where['inputtime'] = array(array('EGT', $start_date), array('ELT', $end_date), 'AND');
-        }
-        if (!empty($message)) {
-            $where['message'] = array('LIKE', '%' . $message . '%');
-        }
-
-        $count = D('Log/Log')->where($where)->count();
-        $total_page = ceil($count / $limit);
-        $Logs = D('Log/Log')->where($where)->page($page)->limit($limit)->order(array("id" => "desc"))->select();
-        $data = [
-            'items' => $Logs,
-            'page' => $page,
-            'limit' => $limit,
-            'total_page' => $total_page,
-        ];
+        $data = LogService::getLogs($category, $start_date, $end_date, $page, $limit, $message);
+        //返回数据
         $this->ajaxReturn(self::createReturn(true, $data));
     }
 
