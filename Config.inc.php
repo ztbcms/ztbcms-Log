@@ -14,13 +14,13 @@ return array(
 	//模块介绍地址
 	'address' => 'http://doc.ztbcms.com/module/log/',
 	//模块作者
-	'author' => 'ZtbCMS',
+	'author' => 'Jayin',
 	//作者地址
 	'authorsite' => 'http://ztbcms.com',
 	//作者邮箱
 	'authoremail' => 'admin@ztbcms.com',
 	//版本号，请不要带除数字外的其他字符
-	'version' => '1.0.0.3',
+	'version' => '1.0.0.4',
 	//适配最低CMS版本，
 	'adaptation' => '3.0.0.0',
 	//签名
